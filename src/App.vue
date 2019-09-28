@@ -4,6 +4,8 @@
     <mt-header fixed title="固定在顶部"></mt-header>
 
     <!-- 中间切换部分 -->
+    <router-view></router-view>
+
     <!-- 底部tabbar区域 -->
     <nav class="mui-bar mui-bar-tab">
       <router-link class="mui-tab-item" to="/home">
@@ -26,7 +28,6 @@
         <span class="mui-tab-label">搜索</span>
       </router-link>
     </nav>
-    <h1>这是 App 组件</h1>
   </div>
 </template>
 
