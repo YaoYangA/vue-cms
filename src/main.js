@@ -23,10 +23,17 @@ import './lib/mui/css/icons-extra.css'
 import router from './router.js'
 
 import VueResource from 'vue-resource'
+import moment from 'moment';
 Vue.use(VueResource)
 Vue.http.options.xhr = { withCredentials: true }
 
+// 设置请求根路径
+Vue.http.options.root='http://localhost'
 
+// 全局时间格式化过滤器
+Vue.filter('dateFormat',function(dataStr,pattern="YYYY-MM-DD HH:mm:ss"){
+    return moment(dataStr).format(pattern)
+})
 
 var vm = new Vue({
     el: '#app',
