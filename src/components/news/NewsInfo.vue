@@ -14,9 +14,12 @@
         <div class="content" v-html="newsinfo.digest"></div>
 
         <!-- 评论区 -->
+        <comment-box :id="this.id"></comment-box>
     </div>
 </template>
 <script>
+
+import comment from '../subcomponents/comment.vue'
 export default {
     data(){
         return {
@@ -37,6 +40,9 @@ export default {
                 }
             })
         }
+    },
+    components :{
+        'comment-box' : comment
     }
 }
 </script>
