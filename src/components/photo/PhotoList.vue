@@ -10,6 +10,7 @@
             :class="['mui-control-item', item.id==0? 'mui-active':'']"
             href="#item1mobile"
             data-wid="tab-top-subpage-1.html" v-for="item in cates" :key="item.id"
+            @click="getPhotoList(item.id)"
           >{{item.name}}</a>
         </div>
       </div>
@@ -17,13 +18,13 @@
 
     <!-- 图片列表区域 -->
     <ul class="photo-list">
-      <router-link v-for="item in photolist" :key="item.id" tag="li">
+      <li v-for="item in photolist" :key="item.id">
         <img v-lazy="item.imgUrl">
         <div class="info">
           <h1 class="info-title">{{ item.name }}</h1>
           <div class="info-body">{{ item.digest }}</div>
         </div>
-      </router-link>
+      </li>
     </ul>
   </div>
 </template>
@@ -38,6 +39,8 @@ export default {
   },
   created() {
     this.getAllCates();
+    // 默认进入页面，就主动请求 所有图片列表的数据
+    this.getPhotoList(0);
   },
   mounted() {
     // 当 组件中的DOM结构被渲染好并放到页面中后，会执行这个 钩子函数
@@ -61,7 +64,7 @@ export default {
       });
     },
     getPhotoList(cateId){
-        this.$http.get("/photo/photo/get/"+cateId).then(result=>{
+        this.$http.get("photo/photo/get/"+cateId).then(result=>{
             if(result.body.code === 0){
                 this.photolist = result.body.message
             }
@@ -71,4 +74,43 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+* {
+  touch-action: pan-y;
+}
+.photo-list {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  padding-bottom: 0;
+  li {
+    background-color: #ccc;
+    text-align: center;
+    margin-bottom: 10px;
+    box-shadow: 0 0 9px #999;
+    position: relative;
+    img {
+      width: 100%;
+      vertical-align: middle;
+    }
+    img[lazy="loading"] {
+      width: 40px;
+      height: 300px;
+      margin: auto;
+    }
+  .info {
+      color: white;
+      text-align: left;
+      position: absolute;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      max-height: 84px;
+      .info-title {
+        font-size: 14px;
+      }
+      .info-body {
+        font-size: 13px;
+      }
+    }
+  }
+}
 </style>

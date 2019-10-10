@@ -9,11 +9,13 @@ import Vuerouter from 'vue-router'
 // 1.2安装vue-router
 Vue.use(Vuerouter);
 
-import { Header,Swipe, SwipeItem,Button } from 'mint-ui'
-Vue.component(Header.name, Header)
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
-Vue.component(Button.name, Button);
+// import { Header,Swipe, SwipeItem,Button } from 'mint-ui'
+// Vue.component(Header.name, Header)
+// Vue.component(Swipe.name, Swipe);
+// Vue.component(SwipeItem.name, SwipeItem);
+// Vue.component(Button.name, Button);
+import MintUI from 'mint-ui'
+Vue.use(MintUI)
 
 import 'mint-ui/lib/style.css'
 // 导入 MUI 的样式
