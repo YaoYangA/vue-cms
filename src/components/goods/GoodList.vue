@@ -1,6 +1,6 @@
 <template>
   <div class="goods-list">
-    <div class="goods-item" v-for="item in list" :key="item.id">
+    <div class="goods-item" v-for="item in list" :key="item.id" @click="getDetil(item.id)">
       <img :src="item.imgUrl" />
       <h1 class="title">{{item.title}}</h1>
       <div class="info">
@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <mt-button type="danger" size="large">加载更多</mt-button>
+    <mt-button type="danger" size="large" @click="loadMore">加载更多</mt-button>
   </div>
 </template>
 <script>
@@ -36,6 +36,13 @@ export default {
                     this.list = this.list.concat(result.body.message) 
                 }
             })
+        },
+        loadMore(){
+            this.pageIndex++
+            this.getPhotoList()
+        },
+        getDetil(id){
+            this.$router.push({name:'goodinfo',params:{id}})
         }
     }
 };
