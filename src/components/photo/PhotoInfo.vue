@@ -59,7 +59,7 @@ export default {
   }
 };
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .photoinfo-container {
   padding: 3px;
   h3 {
@@ -81,10 +81,10 @@ export default {
 
   .thumbs {
     display: flex;
-    my-gallery{
+    .my-gallery{
         display: flex;
         flex-wrap: wrap;
-        figure{
+        .figure{
             margin: 10px;
             box-shadow: 0 0 10px #cccccc;
             img{
